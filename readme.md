@@ -2,7 +2,7 @@
 
 An autonomous currencies exchange trading analytics platform.
 
-![random image](/assets/cover.png)
+![Project Paja Trading System](/docs/assets/cover.png)
 
 Project Paja isn't your average trading robot.
 
