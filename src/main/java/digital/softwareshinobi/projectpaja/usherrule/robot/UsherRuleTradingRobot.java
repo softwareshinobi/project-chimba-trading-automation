@@ -148,7 +148,7 @@ public class UsherRuleTradingRobot {
 
         postExecutionReport.put("size", marketAnalysisReportList.size());
 
-        postExecutionReport.put("executionRepots", marketAnalysisReportList);
+        postExecutionReport.put("executionReports", marketAnalysisReportList);
 
         return postExecutionReport;
 
