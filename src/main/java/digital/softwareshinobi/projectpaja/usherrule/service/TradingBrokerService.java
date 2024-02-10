@@ -25,9 +25,9 @@ public class TradingBrokerService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public static final String base = "https://api.napkinexchange.softwareshinobi.digital";
+    public static final String base = "https://apis.napkinexchange.softwareshinobi.digital";
 
-    public static final String ROBOT_ACCOUNT_NAME = "sasuk2e" + new Date().getTime();
+    public static final String ROBOT_ACCOUNT_NAME = "sasuke" + new Date().getTime();
 
     public static final String ROBOT_EMAIL_ADDRESS = "sasuke@uchiha.digital";
 
@@ -129,7 +129,7 @@ public class TradingBrokerService {
 
     public static Map buySecurities() {
 
-        String brokerEndpointURL = base + "/buy/market";
+        String brokerEndpointURL = base + "/inventory/buy/market";
 
         System.out.println("enter > buy-securities");
 

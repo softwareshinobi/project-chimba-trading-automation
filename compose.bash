@@ -10,4 +10,4 @@ mvn install
 
 cd target
 
-java -jar article-magick-api-1.0.jar
+java -jar project-paja-usher-rule-1.0.jar

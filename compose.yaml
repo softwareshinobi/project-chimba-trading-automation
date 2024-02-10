@@ -2,11 +2,11 @@ version: '3.8'
 
 services:
 
-    napkin-exchange-server:
+    project-paja-usher-rule:
 
-        container_name: napkin-exchange-server
+        container_name: project-paja-usher-rule
         
-        image: softwareshinobi/napkin-exchange-server
+        image: softwareshinobi/project-paja-usher-rule
 
         build: 
 
