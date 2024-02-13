@@ -1,0 +1,803 @@
+<html lang="en"><head>
+  <!-- Required meta tags --> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> Current Week Performance / Trading Robot Analytics</title>
+  <!-- base:css -->
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars-o.css">
+  <link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png">
+<style type="text/css">/* Chart.js */
+@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button><ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search Projects.." aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-lg-flex d-none">
+                
+            </li>
+          <li class="nav-item dropdown d-flex">
+            <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn btn-info font-weight-bold">
+<i class="icon-air-play mx-0"></i>
+The Usher Rule
+</button>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">
+
+Trading Accounts
+
+</p>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                  <h6 class="preview-subject ellipsis font-weight-normal">
+
+The Usher Rule
+
+
+                  </h6>
+                  <p class="font-weight-light small-text text-muted mb-0">
+                    The meeting is cancelled
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                  <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
+                  </h6>
+                  <p class="font-weight-light small-text text-muted mb-0">
+                    New product launch
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                    <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                  <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
+                  </h6>
+                  <p class="font-weight-light small-text text-muted mb-0">
+                    Upcoming board meeting
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown d-flex mr-4">
+            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <i class="icon-cog"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
+              <a class="dropdown-item preview-item">               
+                  <i class="icon-head"></i> Profile
+              </a>
+              <a class="dropdown-item preview-item">
+                  <i class="icon-inbox"></i> Logout
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown mr-4 d-lg-flex d-none">
+            <a class="nav-link count-indicatord-flex align-item s-center justify-content-center" href="#">
+              <i class="icon-grid"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="user-profile">
+
+
+<div class="user-name">
+
+The Usher Rule
+
+</div>
+
+<br>
+
+<div class="user-image">
+
+<img src="data:image/jpeg;base64,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">
+
+</div>
+
+<br>
+
+<div class="user-name">
+
+Entry
+
+</div> 
+
+<br>
+
+<div class="user-name">
+
+minute of the hour = 7
+
+</div>
+
+<br>
+
+<div class="user-name">
+
+Exit
+
+</div> 
+
+<br>
+
+<div class="user-name">
+
+Stop Loss: 1%
+
+</div> 
+
+<div class="user-name"></div> 
+
+<div class="user-name">
+
+Take Profit 4%
+
+</div>
+
+ 
+        </div>
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+              <i class="icon-box menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-disc menu-icon"></i>
+              <span class="menu-title">UI Elements</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/forms/basic_elements.html">
+              <i class="icon-file menu-icon"></i>
+              <span class="menu-title">Form elements</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/charts/chartjs.html">
+              <i class="icon-pie-graph menu-icon"></i>
+              <span class="menu-title">Charts</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/tables/basic-table.html">
+              <i class="icon-command menu-icon"></i>
+              <span class="menu-title">Tables</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">User Pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-sm-12 mb-4 mb-xl-0">
+              <h4 class="font-weight-bold text-dark">
+
+
+Intra Week Trading Performance
+
+</h4>
+              <p class="font-weight-normal mb-2 text-muted">
+
+Week Of / JAN 14, 2024
+
+</p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card">
+              <div class="row flex-grow">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                          <h4 class="card-title">Account Balance</h4>
+                          <p>+23% increase compared to last week's balance</p>
+                          <h4 class="text-dark font-weight-bold mb-2">$1,323,981</h4>
+                          <canvas id="customers" height="33" style="display: block; width: 166px; height: 33px;" width="166" class="chartjs-render-monitor"></canvas>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 stretch-card">
+                    <div class="card">
+                      <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+
+                          <h4 class="card-title">Weekly Strategy Performance</h4>
+
+                          <p>$542,2432 increase in net revenue</p>
+
+                          <h4 class="text-dark font-weight-bold mb-2">+4.24%</h4>
+
+                          <canvas id="orders" height="33" style="display: block; width: 166px; height: 33px;" width="166" class="chartjs-render-monitor"></canvas>
+
+                      </div>
+                    </div>
+               </div>
+              </div>
+            </div>
+            <div class="col-xl-9 d-flex grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+<h4 class="card-title">Day To Day Performance</h4>
+<div class="row">
+<div class="col-lg-5">
+<p>
+
+Weekly performance rollups across all market activity generated this week for this trading situation.</p>
+
+</div>
+<div class="col-lg-7">
+<div class="chart-legends d-lg-block d-none" id="chart-legends"><div class="row"><div class="col-lg-4"><div class="row"><div class="col-sm-12"><h5 class="font-weight-bold text-dark mb-1">83,123</h5></div></div><div class="row align-items-center"><div class="col-2"><span class="legend-label" style="background-color:#3794fc"></span></div><div class="col-9 pl-0"><p class="text-muted m-0 ml-1">Sessions</p></div></div></div><div class="col-lg-4"><div class="row"><div class="col-sm-12"><h5 class="font-weight-bold text-dark mb-1">3,333</h5></div></div><div class="row align-items-center"><div class="col-2"><span class="legend-label" style="background-color:#a037fc"></span></div><div class="col-9 pl-0"><p class="text-muted m-0 ml-1">New Users</p></div></div></div><div class="col-lg-4"><div class="row"><div class="col-sm-12"><h5 class="font-weight-bold text-dark mb-1">16,869</h5></div></div><div class="row align-items-center"><div class="col-2"><span class="legend-label" style="background-color:#dee5ef"></span></div><div class="col-9 pl-0"><p class="text-muted m-0 ml-1">Page Views</p></div></div></div></div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+<canvas id="web-audience-metrics-satacked" class="mt-3 chartjs-render-monitor" height="191" style="display: block; width: 654px; height: 191px;" width="654"></canvas>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-xl-4 grid-margin stretch-card">
+<div class="card">
+<div class="card-body">
+  <div class="d-flex justify-content-between mb-3">
+                          <h4 class="card-title">Market Trends</h4>
+                          <div class="dropdown">
+                              <button class="btn btn-sm dropdown-toggle text-dark pt-0 pr-0" type="button" id="dropdownMenuSizeButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  This week
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton3">
+                                <h6 class="dropdown-header">This week</h6>
+                                <h6 class="dropdown-header">This month</h6>
+                              </div>
+                            </div>
+                      </div>
+                      <div id="chart-legends-market-trend" class="chart-legends mt-1"><div class="row"><div class="col-6 "><div class="row"><div class="col-sm-12 ml-sm-0 mr-sm-0 pr-md-0"><h5 class="font-weight-bold text-dark">$ 83,320</h5></div></div><div class="row align-items-center"><div class="col-12"><p class="text-muted m-0">Total Income</p></div></div></div><div class="col-6 "><div class="row"><div class="col-sm-12 ml-sm-0 mr-sm-0 pr-md-0"><h5 class="font-weight-bold text-dark">$ 32,370</h5></div></div><div class="row align-items-center"><div class="col-12"><p class="text-muted m-0">Total Expenses</p></div></div></div></div></div>
+                      <div class="row mt-2 mb-2">
+                        <div class="col-6">
+                          <div class="text-small"><span class="text-success">18.2%</span> higher </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="text-small"><span class="text-danger">0.7%</span> higher </div>
+                        </div>
+                      </div>
+                      <div class="marketTrends mt-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="marketTrendssatacked" style="display: block; width: 247px; height: 123px;" width="247" height="123" class="chartjs-render-monitor"></canvas>
+                      </div>
+                        
+                    </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Asset Ownership</h4>
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div class="d-flex justify-content-between mt-2 text-dark mb-2">
+                              <div><span class="font-weight-bold">$548,231</span> Utilized</div>
+                              <div>Balance: $1,203,213</div>
+                            </div>
+                        <div class="progress progress-md grouped mb-2">
+
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar  bg-primary" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-light" role="progressbar" style="width: 25%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="traffic-source-legend">
+                          <div class="d-flex justify-content-between mb-1 mt-2">
+                            <div class="font-weight-bold">SOURCE</div>
+                            <div class="font-weight-bold">TOTAL</div>
+                          </div>
+                          
+                          <div class="d-flex justify-content-between legend-label">
+                            <div><span class="bg-info"></span>Pandora</div>
+                            <div>$4444</div>
+                          </div>
+                          <div class="d-flex justify-content-between legend-label">
+                            <div><span class="bg-primary"></span>Europa</div>
+                            <div>$4444</div>
+                          </div>
+                          <div class="d-flex justify-content-between legend-label">
+                            <div><span class="bg-warning"></span>Callisto</div>
+                            <div>$4444</div>
+                          </div>
+                          <div class="d-flex justify-content-between legend-label">
+                            <div><span class="bg-success"></span>Dione</div>
+                            <div>$4444</div>
+                          </div>
+                          <div class="d-flex justify-content-between legend-label">
+                            <div><span class="bg-light"></span>Liquid</div>
+                            <div>$4444</div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title mb-3">Recent Transactions</h4>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="text-dark">
+                          <div class="d-flex pb-3 border-bottom justify-content-between">
+                            <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                            <div class="font-weight-bold mr-sm-4">
+                              <div>BUY 4.410 units DIONE</div>
+                              <div class="text-muted font-weight-normal mt-1">32 Minutes Ago</div>
+                            </div>
+                            <div><h6 class="font-weight-bold text-info ml-sm-2">1.0234</h6></div>
+                          </div>
+                          <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
+                            <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                            <div class="font-weight-bold mr-sm-4">
+                              <div>BUY 4.410 units DIONE</div>
+                              <div class="text-muted font-weight-normal mt-1">45 Minutes Ago</div>
+                            </div>
+                            <div><h6 class="font-weight-bold text-info ml-sm-2">128.63</h6></div>
+                          </div>
+                          <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
+                            <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
+                            <div class="font-weight-bold mr-sm-4">
+                              <div>SELL 1000 units CALLISTO</div>
+                              <div class="text-muted font-weight-normal mt-1">1 Days Ago</div>
+                            </div>
+                            <div><h6 class="font-weight-bold text-info ml-sm-2">3897</h6></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-9 grid-margin-lg-0 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Top Sellers</h4>
+                    <div class="table-responsive mt-3">
+                      <table class="table table-header-bg">
+                        <thead>
+                          <tr>
+                            <th>
+                                Country
+                            </th>
+                            <th>
+                                Revenue
+                            </th>
+                            <th>
+                                Vs Last Month
+                            </th>
+                            <th>
+                                Goal Reached
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <i class="flag-icon flag-icon-us mr-2" title="us" id="us"></i> United States 
+                            </td>
+                            <td>
+                              $911,200
+                            </td>
+                            <td>
+                              <div class="text-success"><i class="icon-arrow-up mr-2"></i>+60%</div>
+                            </td>
+                            <td>
+                              <div class="row">
+                                <div class="col-sm-10">
+                                  <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  25%
+                                </div>
+                              </div>
+                            </td>
+                            
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="flag-icon flag-icon-at mr-2" title="us" id="at"></i> Austria
+                            </td>
+                            <td>
+                                $821,600
+                            </td>
+                            <td>
+                              <div class="text-danger"><i class="icon-arrow-down mr-2"></i>-40%</div>
+                            </td>
+                            <td>
+                              <div class="row">
+                                <div class="col-sm-10">
+                                  <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  50%
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="flag-icon flag-icon-fr mr-2" title="us" id="fr"></i> France
+                            </td>
+                            <td>
+                                $323,700
+                            </td>
+                            <td>
+                              <div class="text-success"><i class="icon-arrow-up mr-2"></i>+40%</div>
+                            </td>
+                            <td>
+                              <div class="row">
+                                <div class="col-sm-10">
+                                  <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  10%
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="py-1">
+                              <i class="flag-icon flag-icon-de mr-2" title="us" id="de"></i> Germany
+                            </td>
+                            <td>
+                                $833,205
+                            </td>
+                            <td>
+                              <div class="text-danger"><i class="icon-arrow-down mr-2"></i>-80%</div>
+                            </td>
+                            <td>
+                              <div class="row">
+                                <div class="col-sm-10">
+                                  <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  70%
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="pb-0">
+                              <i class="flag-icon flag-icon-ae mr-2" title="ae" id="ae"></i> united arab emirates
+                            </td>
+                            <td class="pb-0">
+                                $232,243
+                            </td>
+                            <td class="pb-0">
+                              <div class="text-success"><i class="icon-arrow-up mr-2"></i>+80%</div>
+                            </td>
+                            <td class="pb-0">
+                              <div class="row">
+                                <div class="col-sm-10">
+                                  <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  0%
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 grid-margin-lg-0 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Overall rating</h4>
+                    <div class="d-flex">
+                      <div>
+                          <h4 class="text-dark font-weight-bold mb-2 mr-2">4.3</h4>
+                      </div>
+                      <div>
+                        <div class="br-wrapper br-theme-fontawesome-stars"><select id="over-all-rating" name="rating" autocomplete="off" style="display: none;">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected br-current"></a><a href="#" data-rating-value="2" data-rating-text="2"></a><a href="#" data-rating-value="3" data-rating-text="3"></a><a href="#" data-rating-value="4" data-rating-text="4"></a><a href="#" data-rating-value="5" data-rating-text="5"></a></div></div>
+                      </div>
+                    </div>
+                    <p class="mb-4">Based on 186 reviews</p>
+                    <div class="row">
+                      <div class="col-sm-2 pr-0">
+                          <div class="d-flex">
+                            <div>
+                                <div class="text-dark font-weight-bold mb-2 mr-2">5</div>
+                            </div>
+                            <div>
+                              <i class="fa fa-star text-warning"></i>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-9 pl-2">
+                          <div class="row">
+                            <div class="col-sm-10">
+                              <div class="progress progress-lg mt-1">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="col-sm-2 p-lg-0">
+                              80%
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-sm-2 pr-0">
+                          <div class="d-flex">
+                            <div>
+                                <div class="text-dark font-weight-bold mb-2 mr-2">4</div>
+                            </div>
+                            <div>
+                              <i class="fa fa-star text-warning"></i>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-9 pl-2">
+                          <div class="row">
+                            <div class="col-sm-10">
+                              <div class="progress progress-lg mt-1">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="col-sm-2 p-lg-0">
+                              45%
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-sm-2 pr-0">
+                          <div class="d-flex">
+                            <div>
+                                <div class="text-dark font-weight-bold mb-2 mr-2">3</div>
+                            </div>
+                            <div>
+                              <i class="fa fa-star text-warning"></i>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-9 pl-2">
+                          <div class="row">
+                            <div class="col-sm-10">
+                              <div class="progress progress-lg mt-1">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="col-sm-2 p-lg-0">
+                              30%
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-sm-2 pr-0">
+                          <div class="d-flex">
+                            <div>
+                                <div class="text-dark font-weight-bold mb-2 mr-2">2</div>
+                            </div>
+                            <div>
+                              <i class="fa fa-star text-warning"></i>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-9 pl-2">
+                          <div class="row">
+                            <div class="col-sm-10">
+                              <div class="progress progress-lg mt-1">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 8%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="col-sm-2 p-lg-0">
+                              8%
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-sm-2 pr-0">
+                          <div class="d-flex">
+                            <div>
+                                <div class="text-dark font-weight-bold mb-2 mr-2">5</div>
+                            </div>
+                            <div>
+                              <i class="fa fa-star text-warning"></i>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-9 pl-2">
+                          <div class="row">
+                            <div class="col-sm-10">
+                              <div class="progress progress-lg mt-1">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="col-sm-2 p-lg-0">
+                              1%
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <p class="mb-2 mt-3 mb-3 text-dark font-weight-bold">Rating by category</p>
+                        <div class="d-flex">
+                            <div>
+                                <div class="text-dark font-weight-bold mb-2 mr-2">4.3</div>
+                            </div>
+                            <div class="mr-2">
+                              <i class="fa fa-star text-warning"></i>
+                            </div>
+                            <div><p>Work/Management</p></div>
+                          </div>
+                          <div class="d-flex">
+                              <div>
+                                  <div class="text-dark font-weight-bold mb-2 mr-2">3.5</div>
+                              </div>
+                              <div class="mr-2">
+                                <i class="fa fa-star text-warning"></i>
+                              </div>
+                              <div><p>Salary/Culture</p></div>
+                            </div>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+          </div>
+          <span class="text-muted d-block text-center text-sm-left d-sm-inline-block mt-2">Distributed By: <a href="https://www.themewagon.com/" target="_blank">ThemeWagon</a></span> 
+        </footer>
+        
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- base:js -->
+  <script src="vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+
+
+
+
+</body></html>
