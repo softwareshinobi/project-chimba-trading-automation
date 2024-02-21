@@ -1,4 +1,4 @@
-package digital.softwareshinobi.projectpaja.usherrule.service;
+package digital.softwareshinobi.projectchimba.usherrule.service;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -18,9 +18,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 @Configuration
 @EnableScheduling
-public class TradingBrokerService {
+public class BrokerService {
 
-    private final Logger logger = LoggerFactory.getLogger(TradingBrokerService.class);
+    private final Logger logger = LoggerFactory.getLogger(BrokerService.class);
 
     @Autowired
     private RestTemplate restTemplate;

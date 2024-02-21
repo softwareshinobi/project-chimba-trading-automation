@@ -1,6 +1,6 @@
-package digital.softwareshinobi.projectpaja.usherrule.runner;
+package digital.softwareshinobi.projectchimba.usherrule.runner;
 
-import digital.softwareshinobi.projectpaja.usherrule.service.TradingBrokerService;
+import digital.softwareshinobi.projectchimba.usherrule.service.BrokerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class CreateBrokerAccountRunner implements ApplicationRunner {
 
     @Autowired
-    private TradingBrokerService tradingBrokerService;
+    private BrokerService tradingBrokerService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

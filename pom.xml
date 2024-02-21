@@ -18,15 +18,15 @@
 
     <groupId>digital.softwareshinobi</groupId>
 
-    <artifactId>project-paja-usher-rule</artifactId>
+    <artifactId>project-chimba</artifactId>
 
     <version>1.0</version>
 
-    <name>project-paja-usher-rule</name>
+    <name>project-chimba</name>
 
     <description>
         
-        project-paja-usher-rule
+        project-chimba
         
     </description>
 
@@ -46,7 +46,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
             <type>jar</type>
         </dependency>
         

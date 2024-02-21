@@ -1,6 +1,6 @@
-package digital.softwareshinobi.projectpaja.usherrule.robot;
+package digital.softwareshinobi.projectchimba.usherrule.robot;
 
-import digital.softwareshinobi.projectpaja.usherrule.service.TradingBrokerService;
+import digital.softwareshinobi.projectchimba.usherrule.service.BrokerService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,9 +24,9 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("trading-robot")
 @Configuration
 @EnableScheduling
-public class UsherRuleTradingRobot {
+public class UsherRuleRobot {
 
-    private final Logger logger = LoggerFactory.getLogger(UsherRuleTradingRobot.class);
+    private final Logger logger = LoggerFactory.getLogger(UsherRuleRobot.class);
 
 //    @Autowired
 //    private RestTemplate restTemplate;
@@ -135,7 +135,7 @@ public class UsherRuleTradingRobot {
 
         System.out.println("enter > executeOnTrigger()");
 
-        Map buySecurities = TradingBrokerService.buySecurities();
+        Map buySecurities = BrokerService.buySecurities();
 
         System.out.println("exit < executeOnTrigger()");
 
