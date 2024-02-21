@@ -9,7 +9,7 @@ public class ProjectChimba {
 
     public static void main(final String[] commandLineArguments) throws IOException {
 
-        System.out.println("launch > ProjectPajaUsherRule");
+        System.out.println("launch > ProjectChimba");
 
         SpringApplication.run(ProjectChimba.class, commandLineArguments);
 

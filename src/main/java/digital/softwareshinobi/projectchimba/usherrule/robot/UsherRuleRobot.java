@@ -2,13 +2,15 @@ package digital.softwareshinobi.projectchimba.usherrule.robot;
 
 import digital.softwareshinobi.projectchimba.usherrule.service.BrokerService;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -30,19 +32,19 @@ public class UsherRuleRobot {
 
 //    @Autowired
 //    private RestTemplate restTemplate;
-
     private final List marketAnalysisReportList = new ArrayList();
 
     private Integer countMarketEvaluations = 0;
 
-    private final Integer TARGET_MINUTE = 00;
+    private final Set<Integer> targetMinuteValueSet = new HashSet<>(Arrays.asList(0, 8, 16, 24, 32, 40, 48, 56));
 
-        @Bean
+    @Bean
     public RestTemplate getRestTemplate() {
-        
+
         return new RestTemplate();
-        
+
     }
+
     @GetMapping("")
     public String fetchLandingPage() {
 
@@ -71,25 +73,25 @@ public class UsherRuleRobot {
 
         Map triggerJustificationReport = new HashMap();
 
-        triggerJustificationReport.put("targetMinute", TARGET_MINUTE);
+        triggerJustificationReport.put("targetMinute", targetMinuteValueSet);
 
         triggerJustificationReport.put("actualMinute", currentDate.getMinutes());
 
         Boolean doTrigger = false;
 
-        if (currentDate.getMinutes() == this.TARGET_MINUTE) {
+        if (this.targetMinuteValueSet.contains(currentDate.getMinutes())) {
 
             doTrigger = true;
 
             triggerJustificationReport.put("description", "current minute number [" + currentDate.getMinutes() + "] and "
-                    + "target minute number  [" + this.TARGET_MINUTE + "] DO MATCH");
+                    + "target minute number  [" + this.targetMinuteValueSet + "] DO MATCH");
 
             executeOnTrigger();
 
         } else {
 
             triggerJustificationReport.put("description", "current minute number [" + currentDate.getMinutes() + "] and "
-                    + "target minute number  [" + this.TARGET_MINUTE + "] DO NOT match");
+                    + "target minute number  [" + this.targetMinuteValueSet + "] DO NOT match");
 
         }
 
