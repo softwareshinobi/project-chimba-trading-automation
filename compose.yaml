@@ -1,21 +1,72 @@
-version: '3.8'
-
 services:
 
-    project-chimba:
+    project-chimba-web:
 
-        container_name: project-chimba
+        container_name: project-chimba-web
+
+        image: softwareshinobi/project-chimba-web
+
+        build: 
+
+            context: web
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 8880:80
+
+    project-chimba-links:
+
+        container_name: project-chimba-links
+
+        image: softwareshinobi/project-chimba-links
+
+        build: 
+
+            context: links
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 8881:80
+
+    project-chimba-docs:
+
+        container_name: project-chimba-docs
+
+        image: softwareshinobi/project-chimba-docs
+
+        build: 
+
+            context: docs
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 8882:80
+
+    project-chimba-api:
+
+        container_name: project-chimba-api
         
-        image: softwareshinobi/project-chimba
+        image: softwareshinobi/project-chimba-api
+
+        depends_on:
+
+           - project-chimba-database
 
         build: 
 
             context: .
 
             dockerfile: Dockerfile
-
-        restart: unless-stopped
+    
+        restart: always
 
         ports:
 
             - "8888:8888"
+
