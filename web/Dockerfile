@@ -1,19 +1,7 @@
-###
-### Software Shinobi Cloud Server Controller (Web)
-###
-
 FROM nginx:latest
 
-MAINTAINER Software Shinobi "troy@softwareshinobi.online"
-
-##
+MAINTAINER Software Shinobi "the.software.shinobi@gmail.com"
 
 WORKDIR /usr/share/nginx/html/
 
-##
-
-COPY ./ ./
-
-RUN find
-
-##
+COPY . .

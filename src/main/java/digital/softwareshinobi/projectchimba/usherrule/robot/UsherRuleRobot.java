@@ -35,7 +35,7 @@ public class UsherRuleRobot {
 
     private Integer countMarketEvaluations = 0;
 
-    private final Integer TARGET_MINUTE = 15;
+    private final Integer TARGET_MINUTE = 00;
 
         @Bean
     public RestTemplate getRestTemplate() {

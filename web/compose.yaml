@@ -1,23 +1,17 @@
-version: "3"
-
 services:
 
-    software-shinobi-dashboard:
+    web:
 
-        container_name: software-shinobi-dashboard
+        container_name: web
 
-        image: softwareshinobi/software-shinobi-dashboard:latest
+        image: nginx:latest
 
-        restart: always
+        user: "1000"
+
+        volumes:
         
+            - ${PWD}:/usr/share/nginx/html/           
+         
         ports:
 
-            - "42018:80"
-            
-        networks:
-        
-            - network-software-shinobi-dashboard
-            
-networks:
-
-    network-software-shinobi-dashboard:
+            - 55555:80
