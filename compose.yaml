@@ -14,7 +14,7 @@ services:
 
         ports:
 
-            - 8880:80
+            - 38880:80
 
     project-chimba-links:
 
@@ -30,7 +30,7 @@ services:
 
         ports:
 
-            - 8881:80
+            - 38881:80
 
     project-chimba-docs:
 
@@ -46,17 +46,13 @@ services:
 
         ports:
 
-            - 8882:80
+            - 38882:80
 
     project-chimba-api:
 
         container_name: project-chimba-api
         
         image: softwareshinobi/project-chimba-api
-
-        depends_on:
-
-           - project-chimba-database
 
         build: 
 
@@ -68,5 +64,4 @@ services:
 
         ports:
 
-            - "8888:8888"
-
+            - "38888:8888"
