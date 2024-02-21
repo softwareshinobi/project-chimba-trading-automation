@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 set -x
@@ -10,4 +12,4 @@ docker-compose build
 
 docker-compose down --remove-orphans
 
-docker-compose up
+docker-compose up -d
