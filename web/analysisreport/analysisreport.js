@@ -17,7 +17,7 @@ function fetchCandleHistory() {
 
 		type: "GET",
 		
-        url: "http://localhost:8888/trading-robot/analysis-report/",
+        url: "https://apis.projectchimba.softwareshinobi.digital/trading-robot/analysis-report/",
 
 		contentType: "text/plain",
 		

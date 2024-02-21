@@ -1,53 +1,5 @@
 services:
 
-    project-chimba-web:
-
-        container_name: project-chimba-web
-
-        image: softwareshinobi/project-chimba-web
-
-        build: 
-
-            context: web
-
-            dockerfile: Dockerfile
-
-        ports:
-
-            - 38880:80
-
-    project-chimba-links:
-
-        container_name: project-chimba-links
-
-        image: softwareshinobi/project-chimba-links
-
-        build: 
-
-            context: links
-
-            dockerfile: Dockerfile
-
-        ports:
-
-            - 38881:80
-
-    project-chimba-docs:
-
-        container_name: project-chimba-docs
-
-        image: softwareshinobi/project-chimba-docs
-
-        build: 
-
-            context: docs
-
-            dockerfile: Dockerfile
-
-        ports:
-
-            - 38882:80
-
     project-chimba-api:
 
         container_name: project-chimba-api
@@ -65,3 +17,75 @@ services:
         ports:
 
             - "38888:8888"
+
+        environment:
+
+            VIRTUAL_HOST: apis.projectchimba.softwareshinobi.digital
+
+            LETSENCRYPT_HOST: apis.projectchimba.softwareshinobi.digital
+
+    project-chimba-web:
+
+        container_name: project-chimba-web
+
+        image: softwareshinobi/project-chimba-web
+
+        build: 
+
+            context: web
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 38880:80
+
+        environment:
+
+            VIRTUAL_HOST: projectchimba.softwareshinobi.digital
+
+            LETSENCRYPT_HOST: projectchimba.softwareshinobi.digital
+
+    project-chimba-links:
+
+        container_name: project-chimba-links
+
+        image: softwareshinobi/project-chimba-links
+
+        build: 
+
+            context: links
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 38881:80
+
+        environment:
+
+            VIRTUAL_HOST: links.projectchimba.softwareshinobi.digital
+
+            LETSENCRYPT_HOST: links.projectchimba.softwareshinobi.digital
+
+    project-chimba-docs:
+
+        container_name: project-chimba-docs
+
+        image: softwareshinobi/project-chimba-docs
+
+        build: 
+
+            context: docs
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 38882:80
+
+        environment:
+
+            VIRTUAL_HOST: docs.projectchimba.softwareshinobi.digital
+
+            LETSENCRYPT_HOST: docs.projectchimba.softwareshinobi.digital
