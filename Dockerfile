@@ -1,4 +1,4 @@
-FROM maven:3.8.7-openjdk-18-slim AS MAVEN_BUILD
+FROM maven:3.8.7-openjdk-18-slim AS jreBuild
 
 MAINTAINER Software Shinobi "the.software.shinobi@gmail.com"
 
@@ -10,8 +10,8 @@ RUN mvn install -DskipTests
 
 FROM eclipse-temurin:18-jre-alpine
 
-COPY --from=MAVEN_BUILD /target/napkin-exchange-server-2.0.jar /napkin-exchange-server-2.0.jar
+COPY --from=jreBuild /target/project-chimba-1.0.jar /project-chimba.jar
 
-COPY --from=MAVEN_BUILD /src/main/resources/application.properties /application.properties
+COPY --from=jreBuild /src/main/resources/application.properties /application.properties
 
-CMD ["java", "-jar", "/napkin-exchange-server-2.0.jar"] 
+CMD ["java", "-jar", "project-chimba.jar"] 
