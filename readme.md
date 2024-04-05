@@ -1,12 +1,12 @@
 # Project Paja Trading System: Automonous Market Analytics Trading
 
-An autonomous currencies exchange trading analytics platform.
+Project Paja is an active signal processing platform for trading the securities markets with hawkeye precision and accuracy.
 
 ![Project Paja Trading System](/docs/assets/cover.png)
 
 Project Paja isn't your average trading robot.
 
-Project Paja is an active signal processing platform for trading the securities markets with hawkeye precision and accuracy.
+Project Paja is an autonomous currencies exchange trading analytics platform.
 
 [Access The Trading Robot Dashboard](developer-guides/getting-started-guide.md)
 
