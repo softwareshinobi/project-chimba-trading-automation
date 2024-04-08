@@ -6,9 +6,9 @@ services:
 ##
 ##########################################
 
-    napkin-exchange-market-proxy:
+    project-chimba-trading-proxy:
 
-        container_name: napkin-exchange-market-proxy
+        container_name: project-chimba-trading-proxy
 
         image: nginxproxy/nginx-proxy
 
@@ -38,9 +38,9 @@ services:
 
                 max-file: "3"
 
-    napkin-exchange-market-letsencrypt:
+    project-chimba-trading-letsencrypt:
 
-        container_name: napkin-exchange-market-letsencrypt
+        container_name: project-chimba-trading-letsencrypt
 
         image: jrcs/letsencrypt-nginx-proxy-companion
 
@@ -48,7 +48,7 @@ services:
 
         volumes_from:
 
-            - napkin-exchange-market-proxy
+            - project-chimba-trading-proxy
 
         volumes:
 
@@ -66,9 +66,9 @@ services:
 ##
 ##########################################
 
-    napkin-exchange-market-database:
+    project-chimba-trading-database:
 
-        container_name: napkin-exchange-market-database
+        container_name: project-chimba-trading-database
 
         image: mariadb
 
@@ -86,19 +86,19 @@ services:
 
             MYSQL_PASSWORD: napkin_exchange_market
 
-    napkin-exchange-market-phpmyadmin:
+    project-chimba-trading-phpmyadmin:
 
-        container_name: napkin-exchange-market-phpmyadmin
+        container_name: project-chimba-trading-phpmyadmin
 
         image: beeyev/phpmyadmin-lightweight
 
         depends_on:
 
-           - napkin-exchange-market-database
+           - project-chimba-trading-database
 
         links:
 
-           - napkin-exchange-market-database
+           - project-chimba-trading-database
 
         ports:
 
@@ -106,11 +106,11 @@ services:
 
         environment:
 
-            VIRTUAL_HOST: database.napkinexchange.softwareshinobi.digital
+            VIRTUAL_HOST: database.projectchimba.softwareshinobi.digital
 
-            LETSENCRYPT_HOST: database.napkinexchange.softwareshinobi.digital
+            LETSENCRYPT_HOST: database.projectchimba.softwareshinobi.digital
 
-            PMA_HOST: napkin-exchange-market-database
+            PMA_HOST: project-chimba-trading-database
 
 ##########################################
 ##
@@ -118,15 +118,15 @@ services:
 ##
 ##########################################
 
-    napkin-exchange-market-simulation:
+    project-chimba-trading-automation:
 
-        container_name: napkin-exchange-market-simulation
+        container_name: project-chimba-trading-automation
         
-        image: softwareshinobi/napkin-exchange-market-simulation
+        image: softwareshinobi/project-chimba-trading-automation
 
         depends_on:
 
-           - napkin-exchange-market-database
+           - project-chimba-trading-database
 
         build: 
 
@@ -142,11 +142,11 @@ services:
 
         environment:
 
-            VIRTUAL_HOST: apis.napkinexchange.softwareshinobi.digital
+            VIRTUAL_HOST: apis.projectchimba.softwareshinobi.digital
 
-            LETSENCRYPT_HOST: apis.napkinexchange.softwareshinobi.digital
+            LETSENCRYPT_HOST: apis.projectchimba.softwareshinobi.digital
 
-            DB_HOST: napkin-exchange-market-database
+            DB_HOST: project-chimba-trading-database
 
             DB_PORT: 3306
 
@@ -156,11 +156,11 @@ services:
 
             DB_PASS: napkin_exchange_market
 
-    napkin-exchange-market-web:
+    project-chimba-trading-web:
 
-        container_name: napkin-exchange-market-web
+        container_name: project-chimba-trading-web
 
-        image: softwareshinobi/napkin-exchange-market-web
+        image: softwareshinobi/project-chimba-trading-web
 
         build: 
 
@@ -174,27 +174,9 @@ services:
 
         environment:
 
-            VIRTUAL_HOST: napkinexchange.softwareshinobi.digital
+            VIRTUAL_HOST: projectchimba.softwareshinobi.digital
 
-            LETSENCRYPT_HOST: napkinexchange.softwareshinobi.digital
-
-    napkin-exchange-market-watch:
-
-        container_name: napkin-exchange-market-watch
-
-        image: softwareshinobi/napkin-exchange-market-watch
-
-        build: 
-
-            context: watch
-
-            dockerfile: Dockerfile
-
-        environment:
-
-            VIRTUAL_HOST: watch.napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: watch.napkinexchange.softwareshinobi.digital
+            LETSENCRYPT_HOST: projectchimba.softwareshinobi.digital
 
 ##########################################
 ##
@@ -202,11 +184,11 @@ services:
 ##
 ##########################################
 
-    napkin-exchange-market-links:
+    project-chimba-trading-links:
 
-        container_name: napkin-exchange-market-links
+        container_name: project-chimba-trading-links
 
-        image: softwareshinobi/napkin-exchange-market-links
+        image: softwareshinobi/project-chimba-trading-links
 
         build: 
 
@@ -220,15 +202,15 @@ services:
 
         environment:
 
-            VIRTUAL_HOST: links.napkinexchange.softwareshinobi.digital
+            VIRTUAL_HOST: links.projectchimba.softwareshinobi.digital
 
-            LETSENCRYPT_HOST: links.napkinexchange.softwareshinobi.digital
+            LETSENCRYPT_HOST: links.projectchimba.softwareshinobi.digital
 
-    napkin-exchange-market-docs:
+    project-chimba-trading-docs:
 
-        container_name: napkin-exchange-market-docs
+        container_name: project-chimba-trading-docs
 
-        image: softwareshinobi/napkin-exchange-market-docs
+        image: softwareshinobi/project-chimba-trading-docs
 
         build: 
 
@@ -242,7 +224,7 @@ services:
 
         environment:
 
-            VIRTUAL_HOST: docs.napkinexchange.softwareshinobi.digital
+            VIRTUAL_HOST: docs.projectchimba.softwareshinobi.digital
 
-            LETSENCRYPT_HOST: docs.napkinexchange.softwareshinobi.digital
+            LETSENCRYPT_HOST: docs.projectchimba.softwareshinobi.digital
 
