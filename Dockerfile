@@ -8,8 +8,8 @@ RUN mvn install -DskipTests
 
 FROM eclipse-temurin:18-jre-alpine
 
-COPY --from=mavenBuild /target/napkin-exchange-market-simulation-1.0.jar /napkin-exchange-market-simulation.jar
+COPY --from=mavenBuild /target/project-chimba-trading-automation-1.0.jar /project-chimba-trading-automation.jar
 
 COPY --from=mavenBuild /src/main/resources/application.properties /application.properties
 
-CMD ["java", "-jar", "/napkin-exchange-market-simulation.jar"] 
+CMD ["java", "-jar", "/project-chimba-trading-automation.jar"] 
