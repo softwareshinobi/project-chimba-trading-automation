@@ -12,7 +12,8 @@ function fetchAnalysisHistory() {
 
 		type: "GET",
 		
-        url: "https://apis.projectchimba.softwareshinobi.digital/trading-robot/analysis-report/",
+ url: "http://localhost:8889/robot/analysis-report/",
+       // url: "https://apis.projectchimba.softwareshinobi.digital/trading-robot/analysis-report/",
 
 		contentType: "text/plain",
 		

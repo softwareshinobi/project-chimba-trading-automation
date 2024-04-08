@@ -18,17 +18,13 @@
 
     <groupId>digital.softwareshinobi</groupId>
 
-    <artifactId>project-chimba</artifactId>
+    <artifactId>project-chimba-trading-automation</artifactId>
 
     <version>1.0</version>
 
-    <name>project-chimba</name>
+    <name>project-chimba-trading-automation</name>
 
-    <description>
-        
-        project-chimba
-        
-    </description>
+    <description>project-chimba-trading-automation</description>
 
     <properties>
 
