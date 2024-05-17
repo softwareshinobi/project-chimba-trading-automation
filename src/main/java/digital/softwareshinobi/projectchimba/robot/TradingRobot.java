@@ -160,7 +160,7 @@ public class TradingRobot {
         //return buySecurities;
     }
 
-    @GetMapping("/analysis-report/")
+    @GetMapping("report")
     public Map fetchMarketAnalysisReportHistory() {
 
         Map postExecutionReport = new HashMap();

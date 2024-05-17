@@ -1,7 +1,10 @@
 
 $(document).ready(function () {
 
-	setInterval(fetchAnalysisHistory, 1000);
+    fetchAnalysisHistory();
+
+	setInterval(fetchAnalysisHistory, 1000*8);
+
 });
 
 function fetchAnalysisHistory() {
@@ -12,8 +15,9 @@ function fetchAnalysisHistory() {
 
 		type: "GET",
 		
- url: "http://localhost:8889/robot/analysis-report/",
-       // url: "https://apis.projectchimba.softwareshinobi.digital/trading-robot/analysis-report/",
+// url: "http://localhost:8889/robot/analysis-report/",
+        
+        url: "https://apis.projectchimba.softwareshinobi.digital" + "/robot/report",
 
 		contentType: "text/plain",
 		
@@ -39,35 +43,35 @@ function fetchAnalysisHistory() {
 
 function setResultsArea(responseData) {
 
-    var trHTML = '';
+    var html = '';
 
     for (var i = responseData.executionReports.length - 1; i >= 0; i--) {
 
-        trHTML += '<tr>';
+        html += '<tr>';
 
-        trHTML += '<td class="METADATA DEBUG">' + responseData.executionReports[i].date + '</td>';
+        html += '<td class="METADATA DEBUG">' + responseData.executionReports[i].date + '</td>';
 
-        trHTML += '<td class="METADATA DEBUG">' + responseData.executionReports[i].security + '</td>';
+        html += '<td class="METADATA DEBUG">' + responseData.executionReports[i].security + '</td>';
 
-        trHTML += '<td>' + responseData.executionReports[i].triggerJustificationReport.targetMinute + '</td>';
+        html += '<td>' + responseData.executionReports[i].triggerJustificationReport.targetMinute + '</td>';
 
-        trHTML += '<td>' + responseData.executionReports[i].triggerJustificationReport.actualMinute + '</td>';
+        html += '<td>' + responseData.executionReports[i].triggerJustificationReport.actualMinute + '</td>';
 
-        trHTML += '<td>' + responseData.executionReports[i].triggerJustificationReport.description + '</td>';
+        html += '<td>' + responseData.executionReports[i].triggerJustificationReport.description + '</td>';
 
         if(responseData.executionReports[i].doTrigger){
 
-            trHTML += '<td><label class="badge badge-success">' + responseData.executionReports[i].doTrigger + '</label></td>';
+            html += '<td><label class="badge badge-success">' + responseData.executionReports[i].doTrigger + '</label></td>';
 
         } else {
 
-            trHTML += '<td><label class="badge badge-info">' + responseData.executionReports[i].doTrigger + '</label></td>';
+            html += '<td><label class="badge badge-info">' + responseData.executionReports[i].doTrigger + '</label></td>';
 
         }
 
-        trHTML += '</tr>';
+        html += '</tr>';
 
-        $('#activity-display-table  > tbody').html(trHTML); 
+        $('#activity-display-table  > tbody').html(html); 
 
     }
 
