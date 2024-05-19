@@ -15,9 +15,9 @@ function fetchAnalysisHistory() {
 
 		type: "GET",
 		
-// url: "http://localhost:8889/robot/analysis-report/",
+ url: "http://localhost:9999/robot/report",
         
-        url: "https://apis.projectchimba.softwareshinobi.digital" + "/robot/report",
+     //   url: "https://apis.projectchimba.softwareshinobi.digital" + "/robot/report",
 
 		contentType: "text/plain",
 		

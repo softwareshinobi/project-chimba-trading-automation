@@ -6,6 +6,4 @@ reset
 
 clear
 
-cd .automatr
-
-bash development.bash
+docker-compose -f development.yaml up --build

@@ -24,10 +24,11 @@ public class ExternalBrokerService {
     @Autowired
     private RestTemplate restTemplate;
 
-    //   public static final String apiBase = "http://localhost:8888";
-    public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
+    public static final String apiBase = "http://192.168.1.4:8888";
 
-    public static final String ROBOT_ACCOUNT_NAME = "projectchimba";
+  //  public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
+
+    public static final String ROBOT_ACCOUNT_NAME = "whiplashone";
 
     public static final String ROBOT_EMAIL_ADDRESS = "forever";
 
@@ -49,7 +50,7 @@ public class ExternalBrokerService {
 
         requestBody.put("username", ROBOT_ACCOUNT_NAME);
 
-        requestBody.put("email", ROBOT_EMAIL_ADDRESS);
+        requestBody.put("password", ROBOT_EMAIL_ADDRESS);
 
         HttpEntity<?> brokerHttpRequest = new HttpEntity<>(requestBody, brokerRequest);
 
@@ -58,6 +59,9 @@ public class ExternalBrokerService {
         System.out.println("brokerResponse / " + brokerResponse.getBody());
 
         System.out.println("exit < create-trading-account");
+
+
+System.exit(42);
 
         return "OK";
 
