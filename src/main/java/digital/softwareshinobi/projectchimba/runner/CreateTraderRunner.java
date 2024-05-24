@@ -23,9 +23,11 @@ public class CreateTraderRunner implements ApplicationRunner {
 
             tradingBrokerService.createTradingAccount();
 
+            System.out.println("trader created");
+
         } catch (Exception exception) {
 
-            System.err.print("error creating trader" + exception);
+            System.err.println("error creating trader / " + exception);
 
         }
 

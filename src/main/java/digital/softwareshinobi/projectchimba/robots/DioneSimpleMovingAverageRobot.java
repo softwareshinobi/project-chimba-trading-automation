@@ -1,4 +1,4 @@
-package digital.softwareshinobi.projectchimba.robot;
+package digital.softwareshinobi.projectchimba.robots;
 
 import digital.softwareshinobi.projectchimba.broker.ExternalBrokerService;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -23,87 +24,81 @@ import org.springframework.web.client.RestTemplate;
 
 @CrossOrigin
 @RestController
-@RequestMapping("robot")
+@RequestMapping("robots/let the good times roll")
 @Configuration
 @EnableScheduling
-public class TradingRobot {
+public class DioneSimpleMovingAverageRobot {
 
-    private final Logger logger = LoggerFactory.getLogger(TradingRobot.class);
+    private final Logger logger = LoggerFactory.getLogger(DioneSimpleMovingAverageRobot.class);
+
+    @Autowired
+    private  ExternalBrokerService ExternalBrokerService;
 
     private final List marketAnalysisReportList = new ArrayList();
 
     private Integer countMarketEvaluations = 0;
 
-    private final Set<Integer> targetMinuteValueSet = new HashSet<>(Arrays.asList(0, 8, 16, 24, 32, 40, 48, 56));
-
     private static final int NUMBER_UNITS_TO_BUY = 444;
 
-    @GetMapping("")
-    public String landing() {
-
-        return "project chimba trading robot";
-
-    }
-
-    @GetMapping("/health")
-    public String health() {
-
-        return "OK";
-
-    }
-
-    @Scheduled(fixedRate = 1000 * 60)
+    @Scheduled(fixedRate = 1000 * 30)
     @SuppressWarnings("unused")
     private void performMarketAnalysis() {
 
-        System.out.println("enter > performMarketAnalysis()");
+        System.out.println("SMA > performMarketAnalysis()");
 
+        List<Map> asdf = this.ExternalBrokerService.fetchSecurityPricingHistory("DIONE");
+                
+        logger.debug("asdf / " + asdf);
+
+                logger.debug("asdf size / " + asdf.size());
+                
         Date currentDate = new Date();
 
-        System.out.println("date / " + currentDate);
+        logger.debug("date / " + currentDate);
 
         Map marketAnalyticsReport = ReportStuff(currentDate);
 
         Map goNoGoReport = new HashMap();
 
-        goNoGoReport.put("targetMinute", targetMinuteValueSet);
+  //      goNoGoReport.put("targetMinute", targetMinuteValueSet);
 
-        goNoGoReport.put("actualMinute", currentDate.getMinutes());
+    //    goNoGoReport.put("actualMinute", currentDate.getMinutes());
 
         Boolean doTrigger = false;
 
-        if (false) {
-            doTrigger = true;
-
-            goNoGoReport.put("description", "HACK HACK HACK");
-
-            executeOnTrigger();
-            //   return;
-        } else if (this.targetMinuteValueSet.contains(currentDate.getMinutes())) {
-
-            doTrigger = true;
-
-            goNoGoReport.put("description", "current minute number [" + currentDate.getMinutes() + "] and "
-                    + "target minute number  [" + this.targetMinuteValueSet + "] DO MATCH");
-
-            executeOnTrigger();
-
-        } else {
-
-            goNoGoReport.put("description", "current minute number [" + currentDate.getMinutes() + "] and "
-                    + "target minute number  [" + this.targetMinuteValueSet + "] DO NOT match");
-
-        }
+//        if (false) {
+//            
+//            doTrigger = true;
+//
+//            goNoGoReport.put("description", "HACK HACK HACK");
+//
+//            executeOnTrigger();
+//            //   return;
+//        } else if (this.targetMinuteValueSet.contains(currentDate.getMinutes())) {
+//
+//            doTrigger = true;
+//
+//            goNoGoReport.put("description", "current minute number [" + currentDate.getMinutes() + "] and "
+//                    + "target minute number  [" + this.targetMinuteValueSet + "] DO MATCH");
+//
+//            executeOnTrigger();
+//
+//        } else {
+//
+//            goNoGoReport.put("description", "current minute number [" + currentDate.getMinutes() + "] and "
+//                    + "target minute number  [" + this.targetMinuteValueSet + "] DO NOT match");
+//
+//        }
 
         marketAnalyticsReport.put("triggerJustificationReport", goNoGoReport);
 
         marketAnalyticsReport.put("doTrigger", doTrigger);
 
-        System.out.println("executionReport" + marketAnalyticsReport);
+        logger.debug("executionReport" + marketAnalyticsReport);
 
         marketAnalysisReportList.add(marketAnalyticsReport);
 
-        System.out.println("exit < performMarketAnalysis()");
+        logger.debug("exit < performMarketAnalysis()");
 
         countMarketEvaluations++;
 
@@ -118,7 +113,7 @@ public class TradingRobot {
 
         trader.put("name", ExternalBrokerService.ROBOT_ACCOUNT_NAME);
 
-        trader.put("email", ExternalBrokerService.ROBOT_EMAIL_ADDRESS);
+        trader.put("email", ExternalBrokerService.ROBOT_ACCOUNT_PASS);
 
         marketAnalysisReport.put("trader", trader);
 
@@ -145,7 +140,7 @@ public class TradingRobot {
 
     private void executeOnTrigger() {
 
-        System.out.println("enter > executeOnTrigger()");
+        logger.debug("enter > executeOnTrigger()");
 
         Map buySecurities = ExternalBrokerService.requestSecurityLongSmartBuy("CALLISTO", NUMBER_UNITS_TO_BUY);
 
@@ -155,7 +150,7 @@ public class TradingRobot {
 
         ExternalBrokerService.requestSecurityLongSmartBuy("DIONE", NUMBER_UNITS_TO_BUY);
 
-        System.out.println("exit < executeOnTrigger()");
+        logger.debug("exit < executeOnTrigger()");
 
         //return buySecurities;
     }
@@ -173,10 +168,19 @@ public class TradingRobot {
 
     }
 
-    @Bean
-    public RestTemplate getRestTemplate() {
-
-        return new RestTemplate();
-
-    }
+//    
+//    
+//    @GetMapping("")
+//    public String landing() {
+//
+//        return "eight-minute-meeting";
+//
+//    }
+//
+//    @GetMapping("/health")
+//    public String health() {
+//
+//        return "";
+//
+//    }
 }

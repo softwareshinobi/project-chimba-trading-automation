@@ -12,10 +12,6 @@ services:
 
         image: mariadb
 
-        volumes:
-
-            - ./.volumes/database:/var/lib/mysql
-
         ports:
 
             - 3306:3306
@@ -261,4 +257,3 @@ services:
             VIRTUAL_HOST: docs.projectchimba.softwareshinobi.digital
 
             LETSENCRYPT_HOST: docs.projectchimba.softwareshinobi.digital
-

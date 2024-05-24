@@ -1,10 +1,12 @@
 package digital.softwareshinobi.projectchimba.broker;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -21,47 +23,45 @@ public class ExternalBrokerService {
 
     private final Logger logger = LoggerFactory.getLogger(ExternalBrokerService.class);
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
-    public static final String apiBase = "http://192.168.1.4:8888";
-
-  //  public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
+    //   public static final String apiBase = "http://192.168.1.4:8888";
+    public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
 
     public static final String ROBOT_ACCOUNT_NAME = "whiplashone";
 
-    public static final String ROBOT_EMAIL_ADDRESS = "forever";
+    public static final String ROBOT_ACCOUNT_PASS = "forever";
 
     public String createTradingAccount() {
 
-        String brokerEndpointURL = apiBase + "/trader/create";
-
         System.out.println("enter > create-trading-account");
 
-        MultiValueMap<String, String> brokerRequest = new LinkedMultiValueMap<>();
+        String createTraderEndPoint = apiBase + "/trader/";
+
+        System.out.println("    endpoint / " + createTraderEndPoint);
+
+        MultiValueMap<String, String> brokerRequestMap = new LinkedMultiValueMap<>();
 
         Map requestHeaders = new HashMap<String, String>();
 
         requestHeaders.put("Content-Type", "application/json");
 
-        brokerRequest.setAll(requestHeaders);
+        brokerRequestMap.setAll(requestHeaders);
 
-        Map requestBody = new HashMap();
+        Map requestBodyMap = new HashMap();
 
-        requestBody.put("username", ROBOT_ACCOUNT_NAME);
+        requestBodyMap.put("username", ROBOT_ACCOUNT_NAME);
 
-        requestBody.put("password", ROBOT_EMAIL_ADDRESS);
+        requestBodyMap.put("password", ROBOT_ACCOUNT_PASS);
 
-        HttpEntity<?> brokerHttpRequest = new HttpEntity<>(requestBody, brokerRequest);
+        HttpEntity<?> brokerHttpRequest = new HttpEntity<>(requestBodyMap, brokerRequestMap);
 
-        ResponseEntity<?> brokerResponse = new RestTemplate().postForEntity(brokerEndpointURL, brokerHttpRequest, String.class);
+        ResponseEntity<?> brokerResponse = new RestTemplate().postForEntity(createTraderEndPoint, brokerHttpRequest, String.class);
 
-        System.out.println("brokerResponse / " + brokerResponse.getBody());
+        System.out.println("broker response / " + brokerResponse.getBody());
 
         System.out.println("exit < create-trading-account");
-
-
-System.exit(42);
 
         return "OK";
 
@@ -85,7 +85,7 @@ System.exit(42);
 
         requestBody.put("username", ROBOT_ACCOUNT_NAME);
 
-        requestBody.put("email", ROBOT_EMAIL_ADDRESS);
+        requestBody.put("email", ROBOT_ACCOUNT_PASS);
 
         HttpEntity<?> brokerHttpRequest = new HttpEntity<>(requestBody, brokerRequest);
 
@@ -96,6 +96,47 @@ System.exit(42);
         System.out.println("exit < detail-trading-account");
 
         return (Map) brokerResponse.getBody();
+
+    }
+
+    public List<Map> fetchSecurityPricingHistory(final String symbol) {
+
+        String brokerEndpointURL = apiBase + "/security/history/" + symbol;
+
+        System.out.println("enter > detail-trading-account");
+
+         // Create a RestTemplate instance
+    RestTemplate restTemplate = new RestTemplate();
+
+    // Perform a GET request and store the response in a ResponseEntity object
+    ResponseEntity<String> response = restTemplate.getForEntity(brokerEndpointURL, String.class);
+
+    // Check the response status code
+    if (response.getStatusCode().is2xxSuccessful()) {
+      // Get the response body as a String
+      String data = response.getBody();
+      System.out.println("Response: " + data);
+    } else {
+      System.out.println("Error: " + response.getStatusCodeValue());
+    }
+//        MultiValueMap<String, String> brokerRequest = new LinkedMultiValueMap<>();
+//
+//        Map requestHeaders = new HashMap<String, String>();
+//
+//        requestHeaders.put("Content-Type", "application/json");
+//
+//        brokerRequest.setAll(requestHeaders);
+//
+//     
+//        HttpEntity<?> brokerHttpRequest = new HttpEntity<>( brokerRequest);
+//
+//        ResponseEntity<?> brokerResponse = new RestTemplate().postForEntity(brokerEndpointURL, brokerHttpRequest, Map.class);
+//
+//        System.out.println("brokerResponse / " + brokerResponse.getBody());
+//
+//        System.out.println("exit < detail-trading-account");
+return null;
+     //   return (List<Map>) brokerResponse.getBody();
 
     }
 
@@ -135,8 +176,14 @@ System.exit(42);
 
     }
 
-}
+    @Bean
+    public RestTemplate getRestTemplateSMA() {
 
+        return new RestTemplate();
+
+    }
+    
+}
 //    //   @RequestMapping(value = "/fetch-signals")
 //    private String fetchBrokerSignals() {
 //

@@ -15,7 +15,7 @@ function fetchAnalysisHistory() {
 
 		type: "GET",
 		
-        url: "http://localhost:8888/robot/report",
+        url: "http://localhost:8888/robots/eight-minute-meeting/report",
         
      //   url: "https://apis.projectchimba.softwareshinobi.digital" + "/robot/report",
 
