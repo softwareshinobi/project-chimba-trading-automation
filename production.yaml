@@ -62,7 +62,7 @@ services:
 
 ##########################################
 ##
-## market automation
+## projectchimba / trading automation
 ##
 ##########################################
 
@@ -114,7 +114,7 @@ services:
 
 ##########################################
 ##
-## project documentation
+## projectchimba / docs
 ##
 ##########################################
 

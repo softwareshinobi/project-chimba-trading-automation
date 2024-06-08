@@ -1,77 +1,80 @@
 
+const apiURL = "https://apis.projectchimba.softwareshinobi.digital";
+//        url: "http://localhost:8888/robos/smeight-minute-meeting/report",
+
 $(document).ready(function () {
 
     fetchAnalysisHistory();
 
-	setInterval(fetchAnalysisHistory, 1000*8);
+    setInterval(fetchAnalysisHistory, 1000 * 8);
 
 });
 
 function fetchAnalysisHistory() {
 
-	console.debug("enter > fetchAnalysisHistory");
+    console.debug("enter > fetchAnalysisHistory");
 
-	$.ajax({
+    $.ajax({
 
-		type: "GET",
-		
-        url: "http://localhost:8888/robots/eight-minute-meeting/report",
-        
-     //   url: "https://apis.projectchimba.softwareshinobi.digital" + "/robot/report",
+        type: "GET",
 
-		contentType: "text/plain",
-		
-		crossDomain: true,				
+        url: apiURL + "/robot/sma/report",
 
-		success: function (data, status, jqXHR) {
-            
-            setResultsArea(data);          
+        contentType: "text/plain",
 
-		},
+        crossDomain: true,
 
-		error: function (jqXHR, status) {
+        success: function (data, status, jqXHR) {
 
-			console.log("exception");
-			
-			console.log(jqXHR);
+            setResultsArea(data);
 
-		}
+        },
 
-	});
+        error: function (jqXHR, status) {
+
+            console.log("exception");
+
+            console.log(jqXHR);
+
+        }
+
+    });
 
 }
 
-function setResultsArea(responseData) {
+function setResultsArea(response) {
 
     var html = '';
 
-    for (var i = responseData.executionReports.length - 1; i >= 0; i--) {
+    for (var index = response.executionReports.length - 1; index >= 0; index--) {
 
         html += '<tr>';
 
-        html += '<td class="METADATA DEBUG">' + responseData.executionReports[i].date + '</td>';
+        html += '<td class="METADATA DEBUG">' + response.executionReports[index].date + '</td>';
 
-        html += '<td class="METADATA DEBUG">' + responseData.executionReports[i].security + '</td>';
+        html += '<td class="METADATA DEBUG">' + response.executionReports[index].security + '</td>';
 
-        html += '<td>' + responseData.executionReports[i].triggerJustificationReport.targetMinute + '</td>';
+        html += '<td> $ ' + response.executionReports[index].triggerJustificationReport.price.toFixed(2) + '</td>';
 
-        html += '<td>' + responseData.executionReports[i].triggerJustificationReport.actualMinute + '</td>';
+        html += '<td> $ ' + response.executionReports[index].triggerJustificationReport.sma.toFixed(2) + '</td>';
 
-        html += '<td>' + responseData.executionReports[i].triggerJustificationReport.description + '</td>';
+        html += '<td>' + response.executionReports[index].triggerJustificationReport.reason + '</td>';
 
-        if(responseData.executionReports[i].doTrigger){
+        if (response.executionReports[index].trigger) {
 
-            html += '<td><label class="badge badge-success">' + responseData.executionReports[i].doTrigger + '</label></td>';
+            html += '<td><span class="badge pill bg-primary">' +
+                    response.executionReports[index].trigger + '</span></td>';
 
         } else {
 
-            html += '<td><label class="badge badge-info">' + responseData.executionReports[i].doTrigger + '</label></td>';
+            html += '<td><span class="badge pill bg-secondary">' +
+                    response.executionReports[index].trigger + '</span></td>';
 
         }
 
         html += '</tr>';
 
-        $('#activity-display-table  > tbody').html(html); 
+        $('#activity-display-table  > tbody').html(html);
 
     }
 
