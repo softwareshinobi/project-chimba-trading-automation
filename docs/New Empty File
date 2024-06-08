@@ -1,0 +1,17 @@
+
+nav:
+
+    - Home: 'index.md'   
+    
+    - Installation: 'guides/installation.md'
+
+    - Getting Started: 'guides/getting-started.md'
+    
+    - User Guide: 'guides/user.md'
+        
+    - Architecture: 'guides/architecture.md'
+
+    - Licenses: 'guides/licenses.md'
+
+
+extra_css: [styling.css]

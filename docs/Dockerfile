@@ -1,5 +1,7 @@
 FROM titom73/mkdocs AS MKDOCS_BUILD
 
+MAINTAINER Software Shinobi "the.software.shinobi@gmail.com"
+
 RUN pip install markupsafe==2.0.1
 
 RUN pip install mkdocs-blog-plugin
@@ -7,6 +9,12 @@ RUN pip install mkdocs-blog-plugin
 WORKDIR /docs
 
 COPY . . 
+
+##COPY mkdocs.yml             mkdocs.yml
+
+##COPY .custom-styling.css    custom-styling.css
+
+##COPY docs-content           docs-content
 
 RUN mkdocs build
 

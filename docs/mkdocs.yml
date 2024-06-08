@@ -1,18 +1,10 @@
 
 docs_dir: docs
 
-site_name: Docs / Valorant Digital Scrum
+site_name: Project Chimba Trading Automation
 
 theme:
 
-    palette:
-        
-        scheme: slate
-
-        primary: deep orange
-
-        accent: purple
-        
     ##
     ## Find More Themes Here:
     ##
@@ -36,4 +28,3 @@ theme:
     
     nav_style: primary
 
-extra_css: [styling.css]

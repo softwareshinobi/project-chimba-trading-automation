@@ -1,3 +1,5 @@
+package digital.softwareshinobi.projectchimba.robot;
+
 //package digital.softwareshinobi.projectchimba.robots;
 //
 //import digital.softwareshinobi.projectchimba.broker.ExternalBrokerService;
