@@ -174,34 +174,6 @@ services:
 
             LETSENCRYPT_HOST: projectchimba.softwareshinobi.digital
 
-##########################################
-##
-## project chimba / project documentation
-##
-##########################################
-
-    project-chimba-trading-links:
-
-        container_name: project-chimba-trading-links
-
-        image: softwareshinobi/project-chimba-trading-links
-
-        build: 
-
-            context: links
-
-            dockerfile: Dockerfile
-
-        ports:
-
-            - 8381:80
-
-        environment:
-
-            VIRTUAL_HOST: links.projectchimba.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: links.projectchimba.softwareshinobi.digital
-
     project-chimba-trading-docs:
 
         container_name: project-chimba-trading-docs
@@ -213,10 +185,6 @@ services:
             context: docs
 
             dockerfile: Dockerfile
-
-        ports:
-
-            - 8782:80
 
         environment:
 
