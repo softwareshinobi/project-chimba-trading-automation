@@ -146,6 +146,10 @@ services:
 
             - 9999:8888
 
+        expose:
+
+            - 8888
+
         environment:
 
             VIRTUAL_HOST: apis.projectchimba.softwareshinobi.digital
