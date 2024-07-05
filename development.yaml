@@ -2,131 +2,6 @@ services:
 
 ##########################################
 ##
-<<<<<<< HEAD
-=======
-## storage infrastructure
-##
-##########################################
-
-    napkin-exchange-market-database:
-
-        container_name: napkin-exchange-market-database
-
-        image: mariadb
-
-        ports:
-
-            - 3306:3306
-
-        environment:
-
-            MYSQL_ROOT_PASSWORD: aggiepride
-
-            MYSQL_DATABASE: napkin_exchange_market
-
-            MYSQL_USER: napkin_exchange_market
-
-            MYSQL_PASSWORD: napkin_exchange_market
-
-    napkin-exchange-market-phpmyadmin:
-
-        container_name: napkin-exchange-market-phpmyadmin
-
-        image: beeyev/phpmyadmin-lightweight
-
-        depends_on:
-
-           - napkin-exchange-market-database
-
-        links:
-
-           - napkin-exchange-market-database
-
-        ports:
-
-            - 8885:80
-
-        environment:
-
-            VIRTUAL_HOST: database.napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: database.napkinexchange.softwareshinobi.digital
-
-            PMA_HOST: napkin-exchange-market-database
-
-##########################################
-##
-## market simulation
-##
-##########################################
-
-    napkin-exchange-market-simulation:
-
-        container_name: napkin-exchange-market-simulation
-        
-        image: softwareshinobi/napkin-exchange-market-simulation
-
-        depends_on:
-
-           - napkin-exchange-market-database
-
-        restart: unless-stopped
-
-        ports:
-
-            - "8888:8888"
-
-        environment:
-
-            VIRTUAL_HOST: apis.napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: apis.napkinexchange.softwareshinobi.digital
-
-            DB_HOST: napkin-exchange-market-database
-
-            DB_PORT: 3306
-
-            DB_NAME: napkin_exchange_market
-
-            DB_USER: napkin_exchange_market
-
-            DB_PASS: napkin_exchange_market
-
-    napkin-exchange-market-web:
-
-        container_name: napkin-exchange-market-web
-
-        image: softwareshinobi/napkin-exchange-market-web
-
-        ports:
-
-            - 8880:80
-
-        environment:
-
-            VIRTUAL_HOST: napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: napkinexchange.softwareshinobi.digital
-
-    napkin-exchange-market-docs:
-
-        container_name: napkin-exchange-market-docs
-
-        image: softwareshinobi/napkin-exchange-market-docs
-
-        ports:
-
-            - 8882:80
-
-        environment:
-
-            VIRTUAL_HOST: docs.napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: docs.napkinexchange.softwareshinobi.digital
-
-##########################################
-##
->>>>>>> aventador
 ## project chimba / trading automation
 ##
 ##########################################
@@ -181,37 +56,6 @@ services:
 
             LETSENCRYPT_HOST: projectchimba.softwareshinobi.digital
 
-<<<<<<< HEAD
-##########################################
-##
-## project chimba / project documentation
-##
-##########################################
-
-    project-chimba-trading-links:
-
-        container_name: project-chimba-trading-links
-
-        image: softwareshinobi/project-chimba-trading-links
-
-        build: 
-
-            context: links
-
-            dockerfile: Dockerfile
-
-        ports:
-
-            - 7771:80
-
-        environment:
-
-            VIRTUAL_HOST: links.projectchimba.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: links.projectchimba.softwareshinobi.digital
-
-=======
->>>>>>> aventador
     project-chimba-trading-docs:
 
         container_name: project-chimba-trading-docs
@@ -224,16 +68,34 @@ services:
 
             dockerfile: Dockerfile
 
-<<<<<<< HEAD
         ports:
 
             - 7772:80
 
-=======
->>>>>>> aventador
         environment:
 
             VIRTUAL_HOST: docs.projectchimba.softwareshinobi.digital
 
             LETSENCRYPT_HOST: docs.projectchimba.softwareshinobi.digital
 
+    project-chimba-trading-watch:
+
+        container_name: project-chimba-trading-watch
+
+        image: softwareshinobi/project-chimba-trading-watch
+
+        build: 
+
+            context: watch
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 7773:80
+
+        environment:
+
+            VIRTUAL_HOST: watch.projectchimba.softwareshinobi.digital
+
+            LETSENCRYPT_HOST: watch.projectchimba.softwareshinobi.digital

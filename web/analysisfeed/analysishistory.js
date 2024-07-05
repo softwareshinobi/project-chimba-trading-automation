@@ -1,7 +1,7 @@
 
 var apiURL = "https://apis.projectchimba.softwareshinobi.digital";
 
-var apiURL = "http://localhost:7777";
+//var apiURL = "http://localhost:7777";
 
 $(document).ready(function () {
 
@@ -47,7 +47,21 @@ function setResultsArea(response) {
 
     var html = '';
 
+    var rowCount = 0;
+
     for (var index = response.executionReports.length - 1; index >= 0; index--) {
+
+        // increment counter and break on threshold break
+
+        rowCount = rowCount + 1;
+
+        if(rowCount > 50){
+
+            break;
+
+        }
+
+        //
 
         html += '<tr>';
 
@@ -55,9 +69,9 @@ function setResultsArea(response) {
 
         html += '<td class="METADATA DEBUG">' + response.executionReports[index].security + '</td>';
 
-        html += '<td> $ ' + response.executionReports[index].triggerJustificationReport.price.toFixed(2) + '</td>';
-
         html += '<td> $ ' + response.executionReports[index].triggerJustificationReport.sma.toFixed(2) + '</td>';
+
+        html += '<td> $ ' + response.executionReports[index].triggerJustificationReport.price.toFixed(2) + '</td>';
 
         html += '<td>' + response.executionReports[index].triggerJustificationReport.reason + '</td>';
 
@@ -75,8 +89,10 @@ function setResultsArea(response) {
 
         html += '</tr>';
 
-        $('#activity-display-table  > tbody').html(html);
-
+       
     }
+
+
+    $('#activity-display-table  > tbody').html(html);
 
 }
