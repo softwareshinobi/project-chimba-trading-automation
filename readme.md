@@ -2,7 +2,7 @@
 
 Project Paja is an active signal processing platform for trading the securities markets with hawkeye precision and accuracy.
 
-![Project Paja Trading System](/docs/assets/cover.png)
+![Project Paja Trading System](/docs/docs/assets/cover1.png)
 
 Project Paja isn't your average trading robot.
 

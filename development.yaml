@@ -106,40 +106,6 @@ services:
 
             LETSENCRYPT_HOST: napkinexchange.softwareshinobi.digital
 
-    napkin-exchange-market-watch:
-
-        container_name: napkin-exchange-market-watch
-
-        image: softwareshinobi/napkin-exchange-market-watch
-
-        environment:
-
-            VIRTUAL_HOST: watch.napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: watch.napkinexchange.softwareshinobi.digital
-
-##########################################
-##
-## project documentation
-##
-##########################################
-
-    napkin-exchange-market-links:
-
-        container_name: napkin-exchange-market-links
-
-        image: softwareshinobi/napkin-exchange-market-links
-
-        ports:
-
-            - 8881:80
-
-        environment:
-
-            VIRTUAL_HOST: links.napkinexchange.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: links.napkinexchange.softwareshinobi.digital
-
     napkin-exchange-market-docs:
 
         container_name: napkin-exchange-market-docs
@@ -180,6 +146,10 @@ services:
 
             - 9999:8888
 
+        expose:
+
+            - 8888
+
         environment:
 
             VIRTUAL_HOST: apis.projectchimba.softwareshinobi.digital
@@ -208,34 +178,6 @@ services:
 
             LETSENCRYPT_HOST: projectchimba.softwareshinobi.digital
 
-##########################################
-##
-## project chimba / project documentation
-##
-##########################################
-
-    project-chimba-trading-links:
-
-        container_name: project-chimba-trading-links
-
-        image: softwareshinobi/project-chimba-trading-links
-
-        build: 
-
-            context: links
-
-            dockerfile: Dockerfile
-
-        ports:
-
-            - 8381:80
-
-        environment:
-
-            VIRTUAL_HOST: links.projectchimba.softwareshinobi.digital
-
-            LETSENCRYPT_HOST: links.projectchimba.softwareshinobi.digital
-
     project-chimba-trading-docs:
 
         container_name: project-chimba-trading-docs
@@ -247,10 +189,6 @@ services:
             context: docs
 
             dockerfile: Dockerfile
-
-        ports:
-
-            - 8782:80
 
         environment:
 
