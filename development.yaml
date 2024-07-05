@@ -2,6 +2,8 @@ services:
 
 ##########################################
 ##
+<<<<<<< HEAD
+=======
 ## storage infrastructure
 ##
 ##########################################
@@ -124,6 +126,7 @@ services:
 
 ##########################################
 ##
+>>>>>>> aventador
 ## project chimba / trading automation
 ##
 ##########################################
@@ -144,7 +147,7 @@ services:
 
         ports:
 
-            - 9999:8888
+            - 7777:7777
 
         expose:
 
@@ -170,7 +173,7 @@ services:
 
         ports:
 
-            - 8980:80
+            - 7770:80
 
         environment:
 
@@ -178,6 +181,37 @@ services:
 
             LETSENCRYPT_HOST: projectchimba.softwareshinobi.digital
 
+<<<<<<< HEAD
+##########################################
+##
+## project chimba / project documentation
+##
+##########################################
+
+    project-chimba-trading-links:
+
+        container_name: project-chimba-trading-links
+
+        image: softwareshinobi/project-chimba-trading-links
+
+        build: 
+
+            context: links
+
+            dockerfile: Dockerfile
+
+        ports:
+
+            - 7771:80
+
+        environment:
+
+            VIRTUAL_HOST: links.projectchimba.softwareshinobi.digital
+
+            LETSENCRYPT_HOST: links.projectchimba.softwareshinobi.digital
+
+=======
+>>>>>>> aventador
     project-chimba-trading-docs:
 
         container_name: project-chimba-trading-docs
@@ -190,8 +224,16 @@ services:
 
             dockerfile: Dockerfile
 
+<<<<<<< HEAD
+        ports:
+
+            - 7772:80
+
+=======
+>>>>>>> aventador
         environment:
 
             VIRTUAL_HOST: docs.projectchimba.softwareshinobi.digital
 
             LETSENCRYPT_HOST: docs.projectchimba.softwareshinobi.digital
+

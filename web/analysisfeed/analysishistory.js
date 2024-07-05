@@ -1,6 +1,7 @@
 
-const apiURL = "https://apis.projectchimba.softwareshinobi.digital";
-//        url: "http://localhost:8888/robos/smeight-minute-meeting/report",
+var apiURL = "https://apis.projectchimba.softwareshinobi.digital";
+
+var apiURL = "http://localhost:7777";
 
 $(document).ready(function () {
 
