@@ -34,9 +34,7 @@ public class SimpleMovingAverageRobot {
 
     private Integer countMarketEvaluations = 0;
 
-    private static final int NUMBER_UNITS_TO_BUY = 444;
-
-    @Scheduled(fixedRate = 1000 * 30)
+    @Scheduled(fixedRate = 1000 * 10)
     @SuppressWarnings("unused")
     private void performMarketAnalysis() {
 
@@ -115,7 +113,7 @@ public class SimpleMovingAverageRobot {
         countMarketEvaluations++;
 
         if(doTrigger){
-            this.executeOnTrigger();
+            this.executeOnTrigger(price);
         }
         
         logger.debug("exit < performMarketAnalysis()");
@@ -154,9 +152,20 @@ public class SimpleMovingAverageRobot {
 
     }
 
-    private void executeOnTrigger() {
+    private void executeOnTrigger(double price) {
 
         logger.debug("enter > executeOnTrigger()");
+
+        Map trader = this.externalBrokerService.detailTradingAccount();
+        System.out.println("variable / trader / info /"+trader);
+        
+        double liquidBalance = (double) trader.get("accountBalance");
+        System.out.println("variable / trader / liquidBalance /"+liquidBalance);
+        
+        System.out.println("variable / trader / price /"+price);
+
+        int variableUnits = (int) (liquidBalance / price / 5);
+                System.out.println("variable / trader / variableUnits /"+variableUnits);
 
      //   Map buySecurities = externalBrokerService.requestSecurityLongSmartBuy("CALLISTO", NUMBER_UNITS_TO_BUY);
 
@@ -164,7 +173,7 @@ public class SimpleMovingAverageRobot {
 
  //       externalBrokerService.requestSecurityLongSmartBuy("PANDORA", NUMBER_UNITS_TO_BUY);
 
-        externalBrokerService.requestSecurityLongSmartBuy("DIONE", NUMBER_UNITS_TO_BUY);
+        externalBrokerService.requestSecurityLongSmartBuy("DIONE", variableUnits);
 
         logger.debug("exit < executeOnTrigger()");
 
