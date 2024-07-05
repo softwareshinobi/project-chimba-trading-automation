@@ -34,9 +34,7 @@ public class SimpleMovingAverageRobot {
 
     private Integer countMarketEvaluations = 0;
 
- //   private static final int NUMBER_UNITS_TO_BUY = 444;
-
-    @Scheduled(fixedRate = 1000 * 30)
+    @Scheduled(fixedRate = 1000 * 10)
     @SuppressWarnings("unused")
     private void performMarketAnalysis() {
 

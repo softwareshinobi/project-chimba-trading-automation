@@ -26,10 +26,10 @@ public class ExternalBrokerService {
 
     private final Logger logger = LoggerFactory.getLogger(ExternalBrokerService.class);
 
-    public static final String apiBase = "http://192.168.1.4:8888";
-  //  public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
+ //   public static final String apiBase = "http://192.168.1.4:8888";
+    public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
 
-    public static final String ROBOT_ACCOUNT_NAME = "pandora";
+    public static final String ROBOT_ACCOUNT_NAME = "whiplashone";
 
     public static final String ROBOT_ACCOUNT_PASS = "forever";
 
