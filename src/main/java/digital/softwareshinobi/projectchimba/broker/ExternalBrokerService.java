@@ -29,9 +29,9 @@ public class ExternalBrokerService {
  //   public static final String apiBase = "http://192.168.1.4:8888";
     public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
 
-    public static final String ROBOT_ACCOUNT_NAME = "whiplashone";
+    public static final String ROBOT_ACCOUNT_NAME = "projectchimba";
 
-    public static final String ROBOT_ACCOUNT_PASS = "forever";
+    public static final String ROBOT_ACCOUNT_PASS = "whiplashone";
 
     public String createTradingAccount() {
 
