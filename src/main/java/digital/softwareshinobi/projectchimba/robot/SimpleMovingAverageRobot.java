@@ -159,7 +159,7 @@ public class SimpleMovingAverageRobot {
         Map trader = this.externalBrokerService.detailTradingAccount();
         System.out.println("variable / trader / info /"+trader);
         
-        double liquidBalance = (double) trader.get("accountBalance");
+        double liquidBalance = (double) trader.get("availableFunds");
         System.out.println("variable / trader / liquidBalance /"+liquidBalance);
         
         System.out.println("variable / trader / price /"+price);

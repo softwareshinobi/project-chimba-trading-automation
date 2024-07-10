@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
@@ -26,8 +25,8 @@ public class ExternalBrokerService {
 
     private final Logger logger = LoggerFactory.getLogger(ExternalBrokerService.class);
 
- //   public static final String apiBase = "http://192.168.1.4:8888";
-    public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
+    public static final String apiBase = "http://192.168.1.3:8888";
+  //  public static final String apiBase = "https://apis.napkinexchange.softwareshinobi.digital";
 
     public static final String ROBOT_ACCOUNT_NAME = "projectchimba";
 
